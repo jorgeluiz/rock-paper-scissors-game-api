@@ -13,24 +13,21 @@ namespace RockPaperScissorsGame.Controllers
     public class GamesController : ControllerBase
     {
         private readonly IGameService _gameService;
-        private readonly IGameResultService _gameResultService;
         public GamesController(
-            IGameService gameService,
-            IGameResultService gameResultService
+            IGameService gameService
             )
         {
             _gameService = gameService;
-            _gameResultService = gameResultService;
         }
 
         [HttpPost]
         public IActionResult PlayTheGame([FromBody] PlayerDTO playerDTO)
         {
-            if (!string.IsNullOrEmpty(playerDTO.ChosenOption))
+            if (!string.IsNullOrEmpty(playerDTO.GetValidChosenOptionOrNull()))
             {
-                Game newGame = _gameService.Create(playerDTO);
-                GameResult gameResult = _gameResultService.GetResult(newGame);
-                return Ok(newGame);
+                //Cria um jogo, que já tem um resultado processado
+                Game theGame = _gameService.Create(playerDTO);
+                return Ok(theGame);
             }
             else
             {

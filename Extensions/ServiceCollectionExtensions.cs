@@ -9,7 +9,6 @@ namespace RockPaperScissorsGame.Extensions
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
             services.AddScoped<IGameService, GameService>();
-            services.AddScoped<IGameResultService, GameResultService>();
             return services;
         }
     }
