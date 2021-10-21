@@ -11,7 +11,7 @@ namespace RockPaperScissorsGame.Entities
         public List<Player> Players { get; set; }
         public List<PlayerResult> MatchesResults { get; set; }
         public List<PlayerResult> Tied { get; set; }
-        public Player Winner { get; set; }
+        public PlayerResult Winner { get; set; }
         public bool HasWinner { get; set; }
 
         //Cria um UID para a partida

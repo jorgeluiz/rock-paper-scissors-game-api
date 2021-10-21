@@ -142,7 +142,7 @@ namespace RockPaperScissorsGame.Services
         public Game GameResult(Game game){
             
             List<PlayerResult> ties = new List<PlayerResult>();
-            Player winner = null;
+            PlayerResult winner = null;
             bool hasWinner = false;
 
             SortedDictionary<int, List<PlayerResult>> orderedScores = new SortedDictionary<int, List<PlayerResult>>();
@@ -168,7 +168,7 @@ namespace RockPaperScissorsGame.Services
                 ties = firstItem.Value;
             } else {
                 hasWinner = true;
-                winner = firstItem.Value.First().Player;
+                winner = firstItem.Value.First();
             }
             
             game.HasWinner = hasWinner;
