@@ -23,6 +23,8 @@ namespace RockPaperScissorsGame
             services.AddControllers();
             //Registra os serviços do APP
             services.AddApplicationServices();
+
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -36,6 +38,12 @@ namespace RockPaperScissorsGame
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors(x => x
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .SetIsOriginAllowed(origin => true) // allow any origin
+                .AllowCredentials()); // allow credentials
 
             // app.UseAuthorization();
 
